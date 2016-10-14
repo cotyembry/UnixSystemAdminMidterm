@@ -42,8 +42,14 @@ echo '' > ./_tmpPersonsFullName.txt
 		
 		#to find this out, I will iterate through each of the majors in
 		#/home/STUDENTS/nonmajors/* and see if they are there
+	
+		echo 0 > ./_tmpCheckFlag.txt
 
 		for userDirectory in /home/STUDENTS/nonmajors/*; do
+			#echo 0 > ./_tmpIsNonMajor.txt
+			#echo '' > ./_tmpPersonsFullName.txt
+
+
 			#builtString is the person's username
 			builtString=$(echo $userDirectory | cut -d '/' -f5)
 
@@ -70,37 +76,39 @@ echo '' > ./_tmpPersonsFullName.txt
 						#isNonMajor=1
 
 						echo '1' > ./_tmpIsNonMajor.txt
-						echo $personsFullName > ./_tmpPersonsFullName.txt											
+						echo $personExists > ./_tmpPersonExists.txt
+						echo $personsFullName > ./_tmpPersonsFullName.txt
+						echo 1 > ./_tmpCheckFlag.txt
 					fi
 				done
 				) < /etc/passwd
 
-#				echo "before final if 
+				#echo "before final if, >$(cat ./_tmpIsNonMajor.txt)<"
 
-				if (($(cat ./_tmpIsNonMajor.txt) == 1)); then
-					echo "CS MAJOR $(cat ./_tmpPersonsFullName.txt) is in nonmajor"
+				personExists=0
+	
+			else
+				#if in the past iterations it changed the value of _tmpCheckFlag.txt then that tells me it hasn't been found yet
+				if (( "$(cat ./_tmpCheckFlag.txt)" == 0 )); then
+					#i.e. if here then the person still hasn't been located so far in the iteration
+					echo "$line" > ./_tmpCheckFlagLineName.txt
 				else
-					echo "NO ACCOUNT FOUND $line"
+					echo "" > ./_tmpCheckFlagLineName.txt
 				fi
-				#otherwise do nothing
 			fi
-		
-			echo '0' > ./_tmpIsNonMajor.txt
-			echo '' > ./_tmpPersonsFullName.txt	
-
 		done
 
-		#echo "out of for loop $personsFullName"
 
-		if (( $personExists == 1 )); then
-			#if here then they do exist in /home/STUDENTS/nonmajors
+		#if the username exists in /home/STUDENTS/nonmajors
+		if (( "$(cat ./_tmpPersonExists.txt)" == 1 && "$(cat ./_tmpCheckFlag.txt)" == 1 )); then
 			#display message “CS MAJOR fullname is in nonmajor”
-			echo "in $personExists == 1"
+			echo "CS MAJOR $(cat ./_tmpPersonsFullName.txt) is in nonmajor"
+		else
+			#otherwise
+			#display message “NO ACCOUNT FOUND – current record read
+			echo "NO ACCOUNT FOUND - $(cat _tmpCheckFlagLineName.txt)"
 		fi
 
-			
-		#otherwise
-			#display message “NO ACCOUNT FOUND – current record read
 	fi
 
 	#make sure to reset my flags for the next iteration
@@ -109,6 +117,6 @@ echo '' > ./_tmpPersonsFullName.txt
 done) < inputRecord.txt
 
 	#discard files that I created with this script
-	rm ./_tmpIsNonMajor.txt
-	rm ./_tmpPersonsFullName.txt	
+	#rm ./_tmpIsNonMajor.txt
+	#rm ./_tmpPersonsFullName.txt	
 
