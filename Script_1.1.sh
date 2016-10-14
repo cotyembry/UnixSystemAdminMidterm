@@ -14,15 +14,6 @@ directory='Script_1'
 # I will use absolute paths
 for fileName in ./$directory/*; do
 	fileName=$(echo $fileName | cut -d "/" -f3)
-	# fileName=$(echo $fileName | cut -d "/" -f3)
 	___dirname=$(pwd)
 	mv $___dirname/${directory}/$fileName $___dirname/${directory}/X${fileName}X
-	# cp $fileName 
-
 done
-
-		# echo $fileName
-		# echo $file
-
-		# `mv ./$directory/$file ./X${file}X`
-		# echo $file
