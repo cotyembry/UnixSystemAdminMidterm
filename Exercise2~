@@ -1,6 +1,6 @@
 # CMPSC 4223
 # John Coty Embry 
-# Date: 10-14-2016
+#
 
 # Exercise 2: Write a shell script in a file named Exercise2 to print the following greetings message, except replace Mary Smith with your first and last name.
 # Greetings from ECU. My name is Mary Smith.
@@ -52,7 +52,6 @@ function returnDayAsFullDay {
 		echo "$1 Saturday"
 	fi	
 }
-# this way works...if you don't want to learn the date command
 # dayOfWeek=$(date | cut -d " " -f1) #i.e. sun
 # month=$(date | cut -d " " -f2) #i.e. jan
 # day=$(date | cut -d " " -f3) #i.e. the 25
@@ -66,17 +65,15 @@ function returnDayAsFullDay {
 # returnValue=$(returnDateAsString 10)
 # returnValue=$(returnDayAsFullDay Sat)
 
-#now that I have the functions written to convert between the abbreviated values and
+#now that I have the functions written to converte between the abbreviated values and
 #their full length values, I'll make the code generic. I'm sure there was an easier
 #way to do this..
 
 
 
 
-#but I decided to read the documentation
+
 echo "Local time and date at ECU: Today is `date +"%A %B %d %Y and the time is %r."`"
-
-
 
 #date +"The time is %r on the %eth day of the %B in the year %Y."
 
