@@ -6,7 +6,15 @@
 #Program Comment:	Write a script that will use a while loop to read the contents of a file active_cs.txt and process as follows:
 
 #Note: Do not alter the logic… I am intentionally requiring the nested if-else statement.
-
+#As much as I could I tried not to.. I left the
+#
+#	if
+#		if
+#
+#		else
+#
+#	nested if else in the code, but added while loops and for loops around and within some of them
+#
 
 #I created a file called inputRecord.txt and put majors names in it then added a random
 #string in the file to handle it and branch when encountering it
@@ -34,6 +42,9 @@ echo '' > ./_tmpPersonsFullName.txt
 	done	
 
 	#If the username in first field of the input record does not exist in /home/STUDENTS/majors
+
+	#1 outer if
+
 	if (( $personExists == 0 )); then
 		#if here, then the person didn't exist	in /home/STUDENTS/majors
 		#echo $builtString
@@ -93,11 +104,12 @@ echo '' > ./_tmpPersonsFullName.txt
 			fi
 		done
 
+		#2 nested if else statements
 
 		#if the username exists in /home/STUDENTS/nonmajors
 		if (( "$(cat ./_tmpPersonExists.txt)" == 1 && "$(cat ./_tmpCheckFlag.txt)" == 1 )); then
 			#display message “CS MAJOR fullname is in nonmajor”
-			echo "CS MAJOR $(cat ./_tmpPersonsFullName.txt) is in nonmajor"
+			echo "CS MAJOR $(cat ./_tmpPersonsFullName.txt) is in nonmajor"	
 		else
 			#otherwise
 			#display message “NO ACCOUNT FOUND – current record read
