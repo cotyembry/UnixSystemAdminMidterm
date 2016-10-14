@@ -1,0 +1,45 @@
+# CMPSC 4223
+# John Coty Embry 
+#
+# Exercise 1: Write a shell script in a file named Exercise1 to print the calendar for January 2017 to see what day of the week New Year's occurs on (yes, future dates can be displayed).
+
+cal 1 2017
+
+#Then write a for loop that prints the last 8 files in the /bin directory. 
+
+#ls /bin | tail -n 8 #this works too but is said to be bad since its more unpredictable..?
+
+numberOfFilesInBin=`ls /bin/ | wc`
+numberOfFilesInBin="$(echo $numberOfFilesInBin | cut -d " " -f1)"
+
+#i will help me know when I get to the last 8 files
+i=0
+eight=8
+
+for file in /bin/*; do
+	i=$((i + 1)) #this is an 'arithmetic expansion' - fancy name for addition
+	checkFlag=$(($numberOfFilesInBin - $i))
+	# if ((7 < 8)) #this is 'arithmetic context'
+	if [ "$checkFlag" -lt "$eight" ]
+		then
+		echo $file
+	fi
+done
+
+#Then the script sleeps for 4 seconds.
+sleep 4
+
+#Then write an if statement to test if file Exercise1 exists
+if test -f
+	then
+	#if it does, display the message
+	echo File Exercise1 is alive!
+fi
+
+# Then write a while loop that prints the date and time every two seconds (use the default date format).
+while [[ true ]]; do
+	date
+	sleep 2
+done
+
+#Stop Exercise1 using control c (ctrl-c). Then run Exercise1 in the background and stop it with the ps and kill commands. Use the shell script in these lecture notes as a guide.

@@ -1,0 +1,81 @@
+# CMPSC 4223
+# John Coty Embry 
+#
+
+# Exercise 2: Write a shell script in a file named Exercise2 to print the following greetings message, except replace Mary Smith with your first and last name.
+# Greetings from ECU. My name is Mary Smith.
+echo Greetings from ECU. My name is Coty Embry.
+
+#function definitions
+function returnDateAsString {
+	if (($1 == 1)); then
+		echo "$1 January"
+	elif (($1 == 2)); then
+		echo "$1 February"
+	elif (($1 == 3)); then
+		echo "$1 March"
+	elif (($1 == 4)); then
+		echo "$1 April"
+	elif (($1 == 5)); then
+		echo "$1 May"
+	elif (($1 == 6)); then
+		echo "$1 June"
+	elif (($1 == 7)); then
+		echo "$1 July"
+	elif (($1 == 8)); then
+		echo "$1 August"
+	elif (($1 == 9)); then
+		echo "$1 September"
+	elif (($1 == 10)); then
+		echo "$1 October"
+	elif (($1 == 11)); then
+		echo "$1 November"
+	else (($1 == 12))
+		echo "$1 December"
+	fi
+}
+
+function returnDayAsFullDay {
+	if [ "$1" == "Sun" ]; then
+		echo "$1 Sunday"
+	elif [ "$1" == "Mon" ]; then
+		echo "$1 Monday"
+	elif [ "$1" == "Tue" ]; then
+		echo "$1 Tuesday"
+	elif [ "$1" == "Wed" ]; then
+		echo "$1 Wednesday"
+	elif [ "$1" == "Thu" ]; then
+		echo "$1 Thursday"
+	elif [ "$1" == "Fri" ]; then
+		echo "$1 Friday"
+	else [ "$1" == "Sat" ]
+		echo "$1 Saturday"
+	fi	
+}
+# dayOfWeek=$(date | cut -d " " -f1) #i.e. sun
+# month=$(date | cut -d " " -f2) #i.e. jan
+# day=$(date | cut -d " " -f3) #i.e. the 25
+# thetime=$(date | cut -d " " -f4) #i.e. 23:25:01
+# year=$(date | cut -d " " -f6) #i.e. the 2016
+
+
+# Local time and date at ECU: Today is Thursday September 22, 2016 and the time is 12:37:27 PM.
+# date +"Local time and date at ECU: Today is %r on the %eth day of the %B in the year %Y."
+#echo Local time and date at ECU: Today is
+# returnValue=$(returnDateAsString 10)
+# returnValue=$(returnDayAsFullDay Sat)
+
+#now that I have the functions written to converte between the abbreviated values and
+#their full length values, I'll make the code generic. I'm sure there was an easier
+#way to do this..
+
+
+
+
+
+echo "Local time and date at ECU: Today is `date +"%A %B %d %Y and the time is %r."`"
+
+#date +"The time is %r on the %eth day of the %B in the year %Y."
+
+# The format of the text, time and date must be exactly as shown in the message above. Use the sample script greetings in these lecture notes as a guide.
+
