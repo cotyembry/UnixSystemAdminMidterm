@@ -3,11 +3,12 @@
 #Author:	John Coty Embry
 #Date:		10-12-2016
 #Class: 	Unix System Administration
-#Program Comment:	This will rename all files in a subdirectory called Script_1 to remove a prepend letter X and also remove an append letter X on the file name
+#Program Comment:	Write an interactive shell script that will prompt for a search string, and then identify any files in the subdirectory Script_2 that contains the specified string.
 
-directory='Script_1'
+directory='Script_2'
 
-regex="file "
+# echo "Enter a string to be searched for: " 
+# read searchString
 
 
 # I will use absolute paths
@@ -17,13 +18,30 @@ ___dirname=$(pwd)
 for fileName in ./$directory/*; do
 	#iterate through each line in the file
 
-	while read lineInFile
-	do
-    	if [[ $lineInFile =~ $regex ]]; then
-    		# echo ${#BASH_REMATCH[*]}
-    		echo $lineInFile
-    	fi
-	done < $fileName
+	fileName=$(echo $fileName | cut -d '/' -f3)
+
+	___dirname=$(pwd)
+	absolutePathToFile=$___dirname/${directory}/$fileName
+
+
+	while read p; do
+    	echo $p
+	done < ./Script_2/test1.txt
+
+	# while read lineInFile; do
+	# 	echo $lineInFile
+	# done < $absolutePathToFile
+
+
+	# while read lineInFile
+	# do
+ #    	# if [[ $lineInFile =~ $searchString ]]; then
+ #    	# 	# echo ${#BASH_REMATCH[*]}
+ #    	# 	echo $searchString
+ #    	# fi
+ #    	echo $lineInFile
+	# done < $fileName
+
 	
 	# fileName=$(echo $fileName | cut -d "/" -f3)
 	# ___dirname=$(pwd)
