@@ -91,7 +91,6 @@ echo '' > ./_tmpPersonsFullName.txt
 				#if in the past iterations it changed the value of _tmpCheckFlag.txt then that tells me it hasn't been found yet
 				if (( "$(cat ./_tmpCheckFlag.txt)" == 0 )); then
 					#i.e. if here then the person still hasn't been located so far in the iteration
-
 					echo "$line" > ./_tmpCheckFlagLineName.txt
 				else
 					echo "" > ./_tmpCheckFlagLineName.txt
@@ -99,21 +98,17 @@ echo '' > ./_tmpPersonsFullName.txt
 			fi
 		done
 
-		#echo "out of for loop $personsFullName"
-
-		echo "$line"
 
 		#if the username exists in /home/STUDENTS/nonmajors
 		if (( "$(cat ./_tmpPersonExists.txt)" == 1 && "$(cat ./_tmpCheckFlag.txt)" == 1 )); then
 			#display message “CS MAJOR fullname is in nonmajor”
 			echo "CS MAJOR $(cat ./_tmpPersonsFullName.txt) is in nonmajor"
 		else
-			echo "NO ACCOUNT FOUND $(cat _tmpCheckFlagLineName.txt)"
+			#otherwise
+			#display message “NO ACCOUNT FOUND – current record read
+			echo "NO ACCOUNT FOUND - $(cat _tmpCheckFlagLineName.txt)"
 		fi
 
-			
-		#otherwise
-			#display message “NO ACCOUNT FOUND – current record read
 	fi
 
 	#make sure to reset my flags for the next iteration

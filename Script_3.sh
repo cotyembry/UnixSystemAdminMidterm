@@ -46,9 +46,6 @@ echo '' > ./_tmpPersonsFullName.txt
 		echo 0 > ./_tmpCheckFlag.txt
 
 		for userDirectory in /home/STUDENTS/nonmajors/*; do
-			#echo 0 > ./_tmpIsNonMajor.txt
-			#echo '' > ./_tmpPersonsFullName.txt
-
 
 			#builtString is the person's username
 			builtString=$(echo $userDirectory | cut -d '/' -f5)
@@ -83,8 +80,6 @@ echo '' > ./_tmpPersonsFullName.txt
 				done
 				) < /etc/passwd
 
-				#echo "before final if, >$(cat ./_tmpIsNonMajor.txt)<"
-
 				personExists=0
 	
 			else
@@ -116,7 +111,10 @@ echo '' > ./_tmpPersonsFullName.txt
 	isNonMajor=0
 done) < inputRecord.txt
 
-	#discard files that I created with this script
-	#rm ./_tmpIsNonMajor.txt
-	#rm ./_tmpPersonsFullName.txt	
+	#discard files that I created with this script to help me
+	rm ./_tmpCheckFlag.txt
+	rm ./_tmpCheckFlagLineName.txt
+	rm ./_tmpIsNonMajor.txt
+	rm ./_tmpPersonExists.txt
+	rm ./_tmpPersonsFullName.txt
 
