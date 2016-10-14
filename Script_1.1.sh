@@ -3,7 +3,7 @@
 #Class: 	Unix System Administration
 #Program Comment:	This will rename all files in a subdirectory called Script_1 to prepend and append the letter X to the file name
 
-
+#...
 #!/usr/local/bin/bash
 
 directory='Script_1'
