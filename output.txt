@@ -1,0 +1,13 @@
+Script started on Fri 14 Oct 2016 11:47:58 AM CDT
+johcemb@cs8:~/UnixAdministration/Midterm/githubRepo/UnixSystemAdminMidterm$ exitc[Kman cpecho "hi" | copy./Script_3.sh[Kc[K./Script_3.shc[K./Script_3.sh
+here, 0
+it equals 0
+johcemb@cs8:~/UnixAdministration/Midterm/githubRepo/UnixSystemAdminMidterm$ ./Script_3.sh
+here, 0
+it equals 0
+johcemb@cs8:~/UnixAdministration/Midterm/githubRepo/UnixSystemAdminMidterm$ c
+c: command not found
+johcemb@cs8:~/UnixAdministration/Midterm/githubRepo/UnixSystemAdminMidterm$ exit
+exit
+
+Script done on Fri 14 Oct 2016 11:50:34 AM CDT
